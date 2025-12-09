@@ -315,19 +315,19 @@ const playPauseIcon = document.getElementById("playpause-icon");
 playPauseBtn.addEventListener("click", () => {
     if (mainVideo.paused) {
         mainVideo.play();
-        playPauseIcon.src = "/svg/pause.svg";
+        playPauseIcon.src = "/booktokrecommends/svg/pause.svg";
     } else {
         mainVideo.pause();
-        playPauseIcon.src = "/svg/play.svg";
+        playPauseIcon.src = "/booktokrecommends/svg/play.svg";
     }
 });
 
 mainVideo.addEventListener("play", () => {
-    playPauseIcon.src = "/svg/pause.svg";
+    playPauseIcon.src = "/booktokrecommends/svg/pause.svg";
 });
 
 mainVideo.addEventListener("pause", () => {
-    playPauseIcon.src = "/svg/play.svg";
+    playPauseIcon.src = "/booktokrecommends/svg/play.svg";
 });
 
 
@@ -340,7 +340,7 @@ const muteIcon = document.getElementById("mute-icon");
 
 muteBtn.addEventListener("click", () => {
     mainVideo.muted = !mainVideo.muted;
-    muteIcon.src = mainVideo.muted ? "/svg/muted.svg" : "/svg/son.svg";
+    muteIcon.src = mainVideo.muted ? "/booktokrecommends/svg/muted.svg" : "/booktokrecommends/svg/son.svg";
 });
 
 
@@ -443,4 +443,5 @@ document.addEventListener("click", (e) => {
         initVideoTriggers();
     }
 });
+
 
