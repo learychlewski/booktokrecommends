@@ -1,0 +1,1003 @@
+/* ------------------------------------------------------ */
+/*                    RESET + BASE                        */
+/* ------------------------------------------------------ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------- */
+/*    Cacher la scrollbar                       */
+/* -------------------------------------------- */
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+body {
+    scrollbar-width: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+/* ------------------------------------------------------------------ */
+/*                         FONTS : PP NEUE MONTREAL                   */
+/* ------------------------------------------------------------------ */
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-Book.otf") format("opentype");
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-Thin.otf") format("opentype");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-Medium.otf") format("opentype");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-Bold.otf") format("opentype");
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-Italic.otf") format("opentype");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "PP Neue Montreal";
+    src: url("fonts/PPNeueMontreal-SemiBoldItalic.otf") format("opentype");
+    font-weight: 600;
+    font-style: italic;
+}
+
+
+/* ------------------------------------------------------------------ */
+/*                            FONTS : HAL TIMEZONE                    */
+/* ------------------------------------------------------------------ */
+
+@font-face {
+    font-family: "HAL Timezone";
+    src: url("fonts/HALTimezoneUnlicensed-Regular.otf") format("opentype");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "HAL Timezone";
+    src: url("fonts/HALTimezoneUnlicensed-Italic.otf") format("opentype");
+    font-style: italic;
+    font-weight: 400;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "HAL Timezone", serif;
+    background: #f7dcf0;
+    color: #474642;
+    line-height: 1.5;
+    overflow-x: hidden;
+
+}
+
+
+/* ------------------------------------------------------ */
+/*                     HERO — FIX CORRECTION             */
+/* ------------------------------------------------------ */
+
+#hero {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+    background: radial-gradient(
+        70% 32% at 50% 47%,
+        #E01A4F 0%,
+        #ec3895 40%,
+        #e5bada 75%,
+        #f7dcf0 100%
+    );
+    
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    animation: pulseGradient 4s ease-in-out infinite;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    text-align: center;
+}
+
+@keyframes pulseGradient {
+    0% {
+        background-size: 140% 110%;
+    }
+    50% {
+        background-size: 160% 160%;
+    }
+    100% {
+        background-size: 140% 110%;
+    }
+
+}
+
+
+/* ------------------------------------------------------ */
+/*                LABELS GAUCHES / DROITES                */
+/* ------------------------------------------------------ */
+
+/* MÉMOIRE DNSEP — haut gauche */
+.hero-top {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    text-transform: uppercase;
+    text-align: left;
+
+    font-size: 2vw;          /* identique à LÉA R. */
+    line-height: 0.6;       /* interligne très compact */
+
+    color: #E01A4F;
+    opacity: 0.95;
+}
+
+.hero-top span {
+    display: block;
+}
+
+/* LÉA RYCHLEWSKI — bas droite */
+.hero-author {
+    position: absolute;
+    bottom: 2vw;
+    left: 2vw;
+
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    text-transform: uppercase;
+
+    font-size: 2vw;         /* même taille que MÉMOIRE DNSEP */
+    line-height: 1.05;
+
+    color: #E01A4F;
+    opacity: 0.95;
+}
+
+.hero-year {
+    position: absolute;
+    top: 2vw;
+    right: 2vw;
+
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    text-transform: uppercase;
+
+    font-size: 2vw;
+    line-height: 1;
+    color: #E01A4F;
+    opacity: 0.95;
+}
+
+/* Conteneur scroll fullscreen */
+#fullpage {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;  /* pour la transition fluide */
+}
+
+/* Chaque section occupe tout l'écran */
+#fullpage section {
+    height: 100vh;
+    width: 100%;
+    scroll-snap-align: start;
+}
+
+
+/* ================================ */
+/*       AVANT-PROPOS — STYLE SLIDE */
+/* ================================ */
+
+#avant-propos {
+    width: 100%;
+    height: auto;
+    padding: 6vw 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+
+/* --- carte centrale --- */
+
+.ap-card {
+    width: 85%;
+    max-width: 1100px;
+    background: #ec3895; /* beige rosé */
+    border-radius: 40px;
+    padding: 4vw;
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+    box-shadow:
+        0 0 10px #ec3895,
+        0 0 25px #E01A4F;
+    text-align: center;
+}
+
+/* --- icônes iPhone + laptop ajustées --- */
+
+.ap-card-icons {
+    display: flex;
+    gap: 4vw;
+    align-items: center;
+}
+
+.ap-card-icons img {
+    height: 150px;
+}
+
+/* --- texte de l'avant-propos dans la carte --- */
+
+.ap-card-text {
+    font-size: 22px;
+    font-family: "PP Neue Montreal";
+    color: #f7dcf0;
+    align-content: center;
+}
+
+
+/* -------------------------------------------- */
+/*       TITRE / SOUS-TITRE — CENTRÉS           */
+/* -------------------------------------------- */
+
+.hero-center {
+    width: 100%;
+    max-width: 1300px;
+    margin-top: -60px; /* remonte légèrement selon Figma */
+}
+
+.hero-center h1 {
+    font-family: "HAL Timezone";
+    font-style: italic;
+
+    font-size: 4rem;      /* ≈ 51px desktop */
+    line-height: 0.5;
+    color: #f7dcf0;
+    margin: 0 auto;
+}
+
+.hero-center h1 em {
+    font-family: "HAL Timezone";
+    font-style: italic;
+    font-weight: 400;
+}
+
+/* Sous-titre */
+.hero-subtitle {
+    margin-top: 1rem;
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    color: #f7dcf0;
+
+    font-size: 2.3rem;      /* ≈ 28px desktop */
+    line-height: 1;
+}
+
+
+
+/* ------------------------------------------------------ */
+/*          MAIN LAYOUT : TEXTE + IPHONE FIXE             */
+/* ------------------------------------------------------ */
+
+#memoire {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: #f7dcf0;
+    
+}
+
+/* ------ Colonne gauche scrollable ------ */
+
+#memoire-left {
+    width: 60%;
+    padding: 3rem 6rem 10rem 6rem;
+    padding-right: 4rem;
+    overflow-y: visible;
+    position: relative;
+    background: #f7dcf0;
+    color: #47423b;
+    font-size: 22px;
+    line-height: 1.6;
+    text-align: justify;
+    hyphens: auto;
+    overflow-wrap: break-word;
+word-break: normal;
+
+}
+
+#memoire-left p {
+    margin-bottom: 1rem;
+}
+
+.indent{
+    text-indent: 2em;
+}
+
+/* ------ TITRES ------ */
+
+.section {
+    margin-bottom: 2rem;
+}
+
+.section h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chapter-title {
+    position: relative;
+    font-family: "PP Neue Montreal";
+    font-size: 1.8rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    margin-bottom: 5rem;
+    margin-top: 3rem;
+    color: #f7dcf0; /* beige */
+    text-align: left;
+
+    margin-left: auto; 
+    width: fit-content;
+
+   color: #f7dcf0; /* beige, comme h3 mais plus fort */
+   z-index: 0;
+
+
+}
+
+.chapter-title::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    /* Taille du rectangle */
+    width: 140%;      /* élargir la bande */
+    height: 160%;     /* ajuster la hauteur */
+
+    /* Forme */
+    border-radius: 30px;
+
+    /* Remplissage UNI rose */
+    background: #ec3895;   /* ou #ff7fcf, ou #ff2fae si tu veux + fort */
+
+    /* Flou intense sur les bords */
+    filter: blur(50px);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+.section h3 {
+    position: relative;
+    display: inline-block;
+    z-index: 1; /* pour que le halo soit derrière */
+
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 1.4rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #f7dcf0; 
+    text-align: left;
+}
+
+/* halo discret derrière les h3 */
+.section h3::before {
+    content: "";
+    position: absolute;
+
+
+    /* petite bande lumineuse */
+    width: 110%;
+    height: 130%;
+    left: -5%;
+    top: -15%;
+
+    border-radius: 15px;
+
+    /* rectangle rose doux */
+    background: #ec3895;
+
+    /* flou plus discret que les h2 */
+    filter: blur(10px);
+
+    opacity: 0.60; /* plus subtil */
+    z-index: -1;
+    pointer-events: none;
+}
+
+
+
+/* ------------------------------------------------------ */
+/*               COLONNE DROITE FIXE                      */
+/* ------------------------------------------------------ */
+
+#memoire-right {
+    width: 40%;
+    position: sticky;
+    top:0;
+    height: 100vh;
+    padding-right: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+/* ------------------------------------------------------ */
+/*                TABLE DES MATIÈRES                      */
+/* ------------------------------------------------------ */
+
+
+
+/* texte vertical en blanc/beige léger */
+.toc-label-vertical {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);  /* pour que le texte se lise de bas en haut */
+    
+    color: #f7dcf0;
+    font-family: "HAL Timezone";
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+
+    opacity: 0.95;
+    text-align: center;
+}
+
+
+
+/* ------------------------------------------------------ */
+/*                       IPHONE                           */
+/* ------------------------------------------------------ */
+
+#iphone-wrapper {
+    width: 350px;            /* la largeur que TU veux */
+    height: 650px;
+    position: relative;
+    margin-top: 0.5rem;
+    margin-left: -50px;
+
+}
+
+#iphone-svg {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;     /* important */
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    stroke: #E01A4F !important;
+    fill: transparent !important;
+
+    filter: invert(70%) sepia(40%) saturate(900%) hue-rotate(290deg) brightness(105%) contrast(101%);
+
+    position: relative;
+    z-index: 3;
+}
+
+
+/* --- zone intérieure où les vidéos apparaissent --- */
+
+#iphone-screen {
+    position: absolute;
+    z-index: 1;
+
+    top: 1%;
+    left: 6%;
+    width: 86%;
+    height: 97%;
+    overflow: hidden;
+    border-radius: 35px;
+}
+
+#iphone-screen video {
+    width: 100%;
+    height: 100% ;
+    position: absolute;
+    object-fit: cover;
+    top: 0%;
+    left: 0%;
+    border-radius: 30px;
+}
+
+
+#iphone-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* centre iPhone + boutons ensemble */
+    width: 100%;
+}
+
+/* ------------------------------------------------------ */
+/*               NOTES DE BAS DE PAGE                     */
+/* ------------------------------------------------------ */
+
+sup {
+    cursor: pointer;
+    color: #ff77cb;
+    font-size: 1rem;
+    line-height: 1;
+    position: relative;
+    top: 0em;
+    left: 0em;
+}
+
+sup:hover {
+    color: #E01A4F;
+}
+
+/* bubble */
+
+#note-popup {
+    position: absolute;
+
+   top: 0;
+   left: 0;
+
+   max-width: 400px;
+   padding: 1.2rem 1.2rem 1.2rem 1.2rem;
+
+   font-family: "HAL Timezone";
+   font-size: 1rem;
+   line-height: 1.30;
+   color: #ec3895;
+
+
+    /* animation */
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+
+    z-index: 999; /* AU-DESSUS DE TOUT */
+    pointer-events: none;
+}
+
+#note-popup.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+#note-popup::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    /* même couleur que ton contour */
+
+    background: #f7dcf0; /* beige rosé, très doux */
+
+
+    box-shadow:
+        0 0 60px #ec3895,
+        0 0 120px rgba(255,176,210,0.6),
+        0 0 160px rgba(255,176,210,0.4);
+
+    /* placé sous la bulle */
+    z-index: -1;
+}
+
+
+
+/* ------------------------------------------------------ */
+/*                     RESPONSIVE                         */
+/* ------------------------------------------------------ */
+
+@media (max-width: 1100px) {
+
+    #memoire {
+        flex-direction: column;
+    }
+
+    #memoire-left, #memoire-right {
+        width: 100%;
+        position: relative;
+        height: auto;
+    }
+
+    #iphone-wrapper {
+        margin: 4rem auto;
+    }
+
+    #toc {
+        position: static;
+        margin-bottom: 3rem;
+    }
+
+    .toc-label-vertical {
+        writing-mode: horizontal-tb;
+        text-orientation: unset;
+    }
+}
+
+.smallcaps {
+    font-variant: small-caps;
+    font-size: 0.90em;
+}
+
+/* ----- STYLE SPÉCIAL PENDANT LE PLEIN ÉCRAN ----- */
+
+video:fullscreen {
+    width: 100%;
+    height: auto;
+    object-fit: contain;   /* respecte le ratio original */
+    background: black;     /* optionnel, pour éviter les bandes blanches */
+}
+
+/* Safari */
+video::-webkit-full-screen {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    background: black;
+}
+
+/* ========================= */
+/*   STYLE DES COMMANDES     */
+/* ========================= */
+
+#iphone-controls {
+    display: flex;
+    justify-content: center;   /* centre horizontalement */
+    align-items: center;        /* au cas où */
+    gap: 12px;
+    margin-top: 1rem;
+    margin-left: -50px;
+    width: 100%;     
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    padding: 6px;
+    cursor: pointer;
+
+    width: 32px;
+    height: 32px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.15s ease, opacity 0.15s ease;
+
+    filter: drop-shadow(0 0 6px rgba(255,176,210,0.45));
+}
+
+/* SVG taille homogène */
+.control-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: invert(70%) sepia(40%) saturate(900%) hue-rotate(290deg) brightness(105%) contrast(101%);
+    /* = filtre rose déjà utilisé pour ton iPhone SVG */
+}
+
+/* hover */
+.control-btn:hover {
+    transform: scale(1.15);
+    opacity: 1;
+filter: brightness(0) saturate(200%) invert(39%) sepia(96%) saturate(2650%) hue-rotate(315deg) brightness(105%) contrast(103%);
+}
+
+/* Effet pour les passages qui déclenchent une vidéo */
+.video-trigger {
+    cursor: pointer;
+    color: inherit;
+    transition: color 0.2s ease, text-shadow 0.3s ease;
+    text-shadow: 0 0 5px #E01A4F70;
+}
+
+
+/* style quand on survole */
+.video-trigger:hover {
+    color: #ff2fae; /* rose du site */
+    text-shadow:
+        0 0 8px rgba(255,176,210,0.8),
+        0 0 20px rgba(255,176,210,0.5);
+}
+
+/* Bouton de surlignage (discret) */
+#highlight-btn {
+    position: absolute;   /* au lieu de fixed */
+    background: #FFB0D2;
+    color: #f7dcf0;
+    border: none;
+    border-radius: 12px;
+    padding: 7px 14px;
+    font-family: "PP Neue Montreal";
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 0 12px rgba(255,176,210,0.6);
+    z-index: 5000;
+    display: none;
+}
+
+/* Style du surlignage */
+mark.custom-highlight {
+    background: rgb(255, 245, 135);
+padding-top: 1px;
+padding-bottom: 1px;
+    color: #474642;
+}
+
+/* ===== GLOW ROSE DOUX & TRANSITION ===== */
+#iphone-wrapper {
+    transition: filter 0.5s ease-out; /* transition douce globalisée */
+}
+
+#iphone-wrapper.glow {
+    /* glow réduit et plus fin */
+    filter: drop-shadow(0 0 8px #E01A4F) drop-shadow(0 0 16px #ff68c5);
+}
+
+.center-text {
+    text-align: center;
+    display: block; /* obligatoire pour que le span puisse se centrer */
+    width: 100%;
+}
+
+.exp {
+  font-size: 0.6em;      /* taille de l’exposant */
+  vertical-align: super; /* monte l’exposant */
+  line-height: 1;  
+  font-weight: normal;   /* pour éviter le style notes */
+}
+
+/* =========================================== */
+/*      GRAND PANNEAU DE SOMMAIRE — FIGMA      */
+/* =========================================== */
+
+#toc-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;   /* centre horizontal */
+    align-items: center;       /* centre vertical */
+
+    pointer-events: none;
+    background: rgba(0,0,0,0);
+    z-index: 9999;
+}
+
+
+.toc-panel {
+    width: 70%;
+    max-width: 1200px;
+    background: #f7dcf0;
+    border-radius: 40px;
+    border: 2px solid rgba(255,176,210,0.4);
+    padding: 80px;
+
+    box-shadow:
+        0 0 60px #ec3895,
+        0 0 120px rgba(255,176,210,0.6),
+        0 0 160px rgba(255,176,210,0.4);
+
+    transform: translateX(150%); /* ✔ caché loin sur la droite */
+    opacity: 0;                 /* ✔ totalement invisible */
+    transition: transform 0.8s ease, opacity 0.3s ease;
+
+    pointer-events: none;       /* ✔ clique impossible quand fermé */
+}
+
+/* État ouvert */
+#toc-overlay.open {
+    pointer-events: auto;
+}
+
+#toc-overlay.open .toc-panel {
+    transform: translateX(0);
+    opacity: 1;               /* ✔ visible */
+    pointer-events: auto;     /* ✔ on peut cliquer dedans */
+}
+
+
+
+/* Colonnes internes */
+.toc-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    gap: 60px;
+    justify-items: center;     /* centre chaque colonne dans sa case */
+    justify-content: center;   /* centre la grille entière */
+}
+
+.toc-column {
+    flex: 1;
+    min-width: 270px;
+}
+
+/* Typos */
+#toc-overlay h3 {
+    line-height: 1.1;
+}
+
+#toc-overlay p{
+    line-height: 1;
+}
+
+#toc-overlay h3,
+#toc-overlay p {
+    font-family: "HAL Timezone";
+
+    font-size: 24px;
+    color: #452c0e73;
+    text-align: center;
+    margin-bottom: 15px;
+    cursor: pointer;
+    
+}
+
+#toc-overlay .sub {
+    font-size: 20px;
+}
+
+#toc-overlay p:hover,
+#toc-overlay h3:hover {
+    transform: scale(1.05);
+    color: #ec3895;
+}
+
+.fix-italic {
+    position: relative;
+    display: inline-block;
+}
+
+.fix-italic::after {
+    content: attr(data-text);
+    font-style: italic;
+    visibility: hidden;
+    height: 0;
+    overflow: hidden;
+    display: block;
+}
+
+
+/* Ligne du bas */
+.toc-bottom {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 3 colonnes */
+    justify-content: space-between; /* espace égal */
+    text-align: center;
+    column-gap: 60px;
+    margin-top: 40px;
+}
+
+.toc-top {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    justify-content: center;
+    text-align: center;
+    column-gap: 60px;
+    margin-bottom: 40px;
+    
+}
+
+
+
+/* Petitte poignée rose arrondie */
+#toc-handle {
+    position: fixed;
+    right: 3%;
+    top: 80%;
+    transform: translateY(-50%) scale(1);
+    transform-origin: right center;
+
+    width: 80px;
+    height: 340px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: transform 0.3s ease;
+
+    cursor: pointer;
+
+    z-index: 999999;
+}
+
+/* Texte NON scalé */
+#toc-handle .toc-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg) translateX(20px) translateY(-5px); 
+    font-family: "HAL Timezone";
+    font-style: italic;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    color: #ec3895;
+    line-height: 1;
+
+
+    pointer-events: none; /* important pour le hover sur le handle entier */
+}
+
+/* Hover : seul le bookmark grandit */
+#toc-handle:hover {
+    transform: translateY(-80%) scale(2.7);
+
+    z-index: 9999999;
+}
+
+
+/* Bookmark SVG */
+#toc-bookmark {
+    width: 100%;
+    height: 100%;
+
+
+    position: absolute;
+
+
+transform-origin: right center; /* ou left center selon ton alignement */
+}
+
+#toc-handle img {
+    filter:
+        invert(90%) sepia(12%) saturate(900%) hue-rotate(280deg) brightness(105%) contrast(98%)
+        drop-shadow(0px 0px 12px #ec3895);
+
+        transform-origin: right center; /* ou left center selon ton alignement */
+}
+
+
+
+/* ======== ANIMATIONS FADE-IN + SLIDE-UP ======== */
+
+.section-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
+}
+
+.section-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
