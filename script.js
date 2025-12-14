@@ -3,9 +3,10 @@
 let currentIndex = 0;
 let isOverride = false;
 
-const STORAGE_KEY = "memoire_highlights_v3";
+const STORAGE_KEY = "memoire_highlights_v2";
 const scrollArea = document.getElementById("memoire-left");
-const IS_TOUCH = window.matchMedia("(hover: none)").matches;
+const IS_TOUCH = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+
 
 /* ============================================================
    SOMMAIRE — SLIDE PANEL
@@ -178,31 +179,35 @@ function initImageTriggers() {
   const imageModalCaption = document.getElementById("image-modal-caption");
 
   // Desktop hover overlay
-  if (!IS_TOUCH && hoverOverlay && hoverImg) {
-    triggers.forEach((tr) => {
-      tr.addEventListener("mouseenter", () => {
-        const raw = tr.getAttribute("data-img");
-        if (!raw) return;
+  // Desktop hover overlay (souris uniquement, robuste)
+if (hoverOverlay && hoverImg) {
+  triggers.forEach((tr) => {
+    tr.addEventListener("pointerenter", (e) => {
+      if (e.pointerType !== "mouse") return;
 
-        const first = raw.split(",")[0].trim();
-        hoverImg.src = first;
+      const raw = tr.getAttribute("data-img");
+      if (!raw) return;
 
-        // Si tu as une caption dans data-caption, on l’affiche (sinon on garde ce que tu as)
-        if (hoverCaption) hoverCaption.textContent = tr.getAttribute("data-caption") || "";
+      const first = raw.split(",")[0].trim();
+      hoverImg.src = first;
 
-        hoverOverlay.classList.add("visible");
-      });
+      if (hoverCaption) {
+        hoverCaption.textContent = tr.getAttribute("data-caption") || "";
+      }
+
+      hoverOverlay.classList.add("visible");
     });
+  });
 
-    // clic overlay ferme (on ignore le clic sur l’image)
-    hoverOverlay.addEventListener("click", (e) => {
-      if (e.target === hoverOverlay) hoverOverlay.classList.remove("visible");
-    });
+  hoverOverlay.addEventListener("click", (e) => {
+    if (e.target === hoverOverlay) hoverOverlay.classList.remove("visible");
+  });
 
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") hoverOverlay.classList.remove("visible");
-    });
-  }
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hoverOverlay.classList.remove("visible");
+  });
+}
+
 
   // Mobile/Tablet: click -> modale image (on réutilise #image-modal si présent)
   if (IS_TOUCH && imageModal && imageModalImg) {
@@ -1621,4 +1626,3 @@ if (tocMobileList) {
     }
   });
 })();
-

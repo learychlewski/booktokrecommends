@@ -2092,29 +2092,6 @@ color: #e4215d;
 
 @media (max-width: 768px) {
 
-  #hero {
-    min-height: 100svh;
-    padding: 32px 16px;
-  }
-
-  .hero-center h1 {
-    font-size: 32px;
-    line-height: 1.1;
-  }
-
-  .hero-subtitle {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-
-  .hero-author {
-    font-size: 14px;
-    margin-top: 24px;
-  }
-}
-
-@media (max-width: 768px) {
-
   #avant-propos {
     padding: 24px 16px;
   }
@@ -3118,3 +3095,175 @@ sup[data-note] {
   max-width: var(--text-width);
 }
 
+
+
+
+/* =========================================================
+   FIX DÉFINITIF — FULLPAGE MOBILE
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* on casse complètement le layout fullpage */
+  #fullpage {
+    height: auto !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  #fullpage section {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+}
+
+/* =========================================================
+   HERO — MOBILE SIMPLE & STABLE (UNE SEULE RÈGLE)
+   ========================================================= */
+@media (max-width: 768px) {
+
+  /* on désactive définitivement le fullpage sur mobile */
+  #fullpage,
+  #fullpage section {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  /* HERO = 1 écran */
+  #hero {
+    height: 120svh !important;
+    min-height: 120svh !important;
+
+    padding: 48px 20px;
+
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: linear-gradient(
+      to bottom,
+      #f5dcec 0%,     /* rose très clair */
+      #ff7bbd 22%,    /* rose */
+      #e4215d 50%,    /* rouge */
+      #ff7bbd 78%,    /* rose */
+      #f5dcec 100%    /* rose très clair */
+    );
+  }
+
+  /* hiérarchie texte */
+  .hero-top,
+  .hero-year {
+    position: static;
+    font-size: 13px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .hero-center h1 {
+    font-size: clamp(34px, 10vw, 46px);
+    line-height: 1.05;
+    margin: 24px 0;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+    line-height: 1.35;
+    max-width: 28ch;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .hero-author {
+    position: static;
+    font-size: 14px;
+    text-align: center;
+  }
+}
+
+/* Cache complètement la caption quand elle est vide */
+#hover-image-caption:empty {
+  display: none;
+}
+
+/* Et supprime aussi les parenthèses si jamais */
+#hover-image-caption:empty::before,
+#hover-image-caption:empty::after {
+  content: none;
+}
+
+/* =========================================================
+   HERO — MOBILE (RÈGLE UNIQUE, ÉCRASE TOUT)
+   ========================================================= */
+@media (max-width: 900px) {
+
+  /* on casse le fullpage sur mobile (sinon sections=100vh peut te couper) */
+  #fullpage,
+  #fullpage section {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    scroll-snap-type: none !important;
+  }
+
+  #hero{
+    /* + grand qu’un écran, comme tu veux (respire +) */
+    height: 112svh !important;
+    min-height: 112svh !important;
+
+    /* dégradé linéaire clair > rose > rouge > rose > clair */
+    background: linear-gradient(
+      to bottom,
+      #f5dcec 0%,
+      #ff7bbd 24%,
+      #e4215d 50%,
+      #ff7bbd 76%,
+      #f5dcec 100%
+    ) !important;
+
+    /* IMPORTANT : on coupe l’anim du radial desktop */
+    animation: none !important;
+
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 52px 18px 44px; /* ajuste si tu veux + d’air */
+    text-align: center;
+  }
+
+  /* mise en page cohérente téléphone */
+  .hero-top,
+  .hero-year{
+    position: static !important;
+    font-size: 13px;
+    line-height: 1.1;
+    margin: 0;
+    text-align: center;
+  }
+
+  .hero-year{ margin-top: 6px; }
+
+  .hero-center h1{
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 1.05;
+    margin: 26px 0 18px;
+  }
+
+  .hero-subtitle{
+    font-size: 15px;
+    line-height: 1.35;
+    max-width: 30ch;
+    margin: 0 auto;
+  }
+
+  .hero-author{
+    position: static !important;
+    font-size: 14px;
+    margin-top: 26px;
+    text-align: center;
+  }
+}
