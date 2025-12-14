@@ -1,6 +1,4 @@
-/* ------------------------------------------------------ */
-/*                    RESET + BASE                        */
-/* ------------------------------------------------------ */
+
 
 * {
     margin: 0;
@@ -8,24 +6,6 @@
     box-sizing: border-box;
 }
 
-/* -------------------------------------------- */
-/*    Cacher la scrollbar                       */
-/* -------------------------------------------- */
-
-body::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-}
-body {
-    scrollbar-width: none;
-}
-
-::-webkit-scrollbar {
-    display: none;
-}
-/* ------------------------------------------------------------------ */
-/*                         FONTS : PP NEUE MONTREAL                   */
-/* ------------------------------------------------------------------ */
 
 @font-face {
     font-family: "PP Neue Montreal";
@@ -65,10 +45,6 @@ body {
 }
 
 
-/* ------------------------------------------------------------------ */
-/*                            FONTS : HAL TIMEZONE                    */
-/* ------------------------------------------------------------------ */
-
 @font-face {
     font-family: "HAL Timezone";
     src: url("fonts/HALTimezoneUnlicensed-Regular.otf") format("opentype");
@@ -89,17 +65,13 @@ html {
 
 body {
     font-family: "HAL Timezone", serif;
-    background: #f7dcf0;
+    background: #f5dcec;
     color: #474642;
     line-height: 1.5;
     overflow-x: hidden;
 
 }
 
-
-/* ------------------------------------------------------ */
-/*                     HERO — FIX CORRECTION             */
-/* ------------------------------------------------------ */
 
 #hero {
     height: 100vh;
@@ -108,10 +80,10 @@ body {
 
     background: radial-gradient(
         70% 32% at 50% 47%,
-        #E01A4F 0%,
-        #ec3895 40%,
+        #e4215d 0%,
+        #ff2fae 40%,
         #e5bada 75%,
-        #f7dcf0 100%
+        #f5dcec 100%
     );
     
 
@@ -141,12 +113,6 @@ body {
 
 }
 
-
-/* ------------------------------------------------------ */
-/*                LABELS GAUCHES / DROITES                */
-/* ------------------------------------------------------ */
-
-/* MÉMOIRE DNSEP — haut gauche */
 .hero-top {
     position: absolute;
     top: 2vw;
@@ -157,10 +123,10 @@ body {
     text-transform: uppercase;
     text-align: left;
 
-    font-size: 2vw;          /* identique à LÉA R. */
-    line-height: 0.6;       /* interligne très compact */
+    font-size: 2vw;    
+    line-height: 0.6;
 
-    color: #E01A4F;
+    color: #e4215d;
     opacity: 0.95;
 }
 
@@ -168,22 +134,10 @@ body {
     display: block;
 }
 
-/* LÉA RYCHLEWSKI — bas droite */
-.hero-author {
-    position: absolute;
-    bottom: 2vw;
-    left: 2vw;
-
-    font-family: "PP Neue Montreal";
-    font-weight: 300;
-    text-transform: uppercase;
-
-    font-size: 2vw;         /* même taille que MÉMOIRE DNSEP */
-    line-height: 1.05;
-
-    color: #E01A4F;
-    opacity: 0.95;
+.hero-year span{
+    display: block;
 }
+
 
 .hero-year {
     position: absolute;
@@ -195,30 +149,29 @@ body {
     text-transform: uppercase;
 
     font-size: 2vw;
-    line-height: 1;
-    color: #E01A4F;
+    line-height: 0.6;
+    color: #e4215d;
     opacity: 0.95;
 }
 
-/* Conteneur scroll fullscreen */
 #fullpage {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;  /* pour la transition fluide */
+    scroll-behavior: smooth; 
+    scrollbar-width: none; 
 }
 
-/* Chaque section occupe tout l'écran */
+#fullpage::-webkit-scrollbar {
+    display: none; 
+}
+
 #fullpage section {
     height: 100vh;
     width: 100%;
     scroll-snap-align: start;
 }
 
-
-/* ================================ */
-/*       AVANT-PROPOS — STYLE SLIDE */
-/* ================================ */
 
 #avant-propos {
     width: 100%;
@@ -231,25 +184,43 @@ body {
     position: relative;
 }
 
-
-/* --- carte centrale --- */
-
 .ap-card {
     width: 85%;
     max-width: 1100px;
-    background: #ec3895; /* beige rosé */
     border-radius: 40px;
     padding: 4vw;
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: 4vw;
-    box-shadow:
-        0 0 10px #ec3895,
-        0 0 25px #E01A4F;
     text-align: center;
+    position: relative; 
 }
 
-/* --- icônes iPhone + laptop ajustées --- */
+
+.ap-card::before,
+.ap-card::after {
+    content: "(";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 6rem;      
+    color: #e4215d;
+}
+
+
+.ap-card::before {
+    left: -40px;     
+}
+
+
+.ap-card::after {
+    content: ")";
+    right: -40px; 
+}
+
 
 .ap-card-icons {
     display: flex;
@@ -261,33 +232,28 @@ body {
     height: 150px;
 }
 
-/* --- texte de l'avant-propos dans la carte --- */
 
 .ap-card-text {
     font-size: 22px;
-    font-family: "PP Neue Montreal";
-    color: #f7dcf0;
+    font-family: "HAL Timezone";
+    color: #e4215d;
     align-content: center;
 }
 
 
-/* -------------------------------------------- */
-/*       TITRE / SOUS-TITRE — CENTRÉS           */
-/* -------------------------------------------- */
-
 .hero-center {
     width: 100%;
     max-width: 1300px;
-    margin-top: -60px; /* remonte légèrement selon Figma */
+    margin-top: -60px;
 }
 
 .hero-center h1 {
     font-family: "HAL Timezone";
     font-style: italic;
 
-    font-size: 4rem;      /* ≈ 51px desktop */
+    font-size: 4rem; 
     line-height: 0.5;
-    color: #f7dcf0;
+    color: #f5dcec;
     margin: 0 auto;
 }
 
@@ -297,33 +263,29 @@ body {
     font-weight: 400;
 }
 
-/* Sous-titre */
+
 .hero-subtitle {
     margin-top: 1rem;
     font-family: "PP Neue Montreal";
     font-weight: 300;
-    color: #f7dcf0;
+    color: #f5dcec;
 
-    font-size: 2.3rem;      /* ≈ 28px desktop */
+    font-size: 2.3rem; 
     line-height: 1;
 }
 
 
-
-/* ------------------------------------------------------ */
-/*          MAIN LAYOUT : TEXTE + IPHONE FIXE             */
-/* ------------------------------------------------------ */
 
 #memoire {
     display: flex;
     width: 100%;
     min-height: 100vh;
     position: relative;
-    background: #f7dcf0;
+    background: #f5dcec;
     
 }
 
-/* ------ Colonne gauche scrollable ------ */
+
 
 #memoire-left {
     width: 60%;
@@ -331,8 +293,8 @@ body {
     padding-right: 4rem;
     overflow-y: visible;
     position: relative;
-    background: #f7dcf0;
-    color: #47423b;
+    background: #f5dcec;
+    color: #862149;
     font-size: 22px;
     line-height: 1.6;
     text-align: justify;
@@ -340,7 +302,13 @@ body {
     overflow-wrap: break-word;
 word-break: normal;
 
+overflow-y: scroll; 
+    scrollbar-width: thin; 
+    scrollbar-color: #ffb0d2 #f5dcec;
+
 }
+
+
 
 #memoire-left p {
     margin-bottom: 1rem;
@@ -350,7 +318,7 @@ word-break: normal;
     text-indent: 2em;
 }
 
-/* ------ TITRES ------ */
+
 
 .section {
     margin-bottom: 2rem;
@@ -361,99 +329,90 @@ word-break: normal;
     margin-bottom: 2rem;
 }
 
+
+
 .chapter-title {
-    position: relative;
     font-family: "PP Neue Montreal";
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-weight: 300;
+    position: relative;
+
+    display: block;            
+    width: fit-content;          
+    padding: 0 38px;           
+    margin: 60px 0 60px auto;  
+
+    font-size: 2.2rem;
+    line-height: 1.2;
     text-transform: uppercase;
-    letter-spacing: -0.05em;
-    line-height: 0.9;
-    margin-bottom: 5rem;
-    margin-top: 3rem;
-    color: #f7dcf0; /* beige */
-    text-align: left;
+    text-align: center;         
+    color: #ff2fae;
+    z-index: 1;
+}
 
-    margin-left: auto; 
-    width: fit-content;
-
-   color: #f7dcf0; /* beige, comme h3 mais plus fort */
-   z-index: 0;
-
-
+.chapter-title::before,
+.chapter-title::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff2fae; 
+    opacity: 1; 
 }
 
 .chapter-title::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    /* Taille du rectangle */
-    width: 140%;      /* élargir la bande */
-    height: 160%;     /* ajuster la hauteur */
-
-    /* Forme */
-    border-radius: 30px;
-
-    /* Remplissage UNI rose */
-    background: #ec3895;   /* ou #ff7fcf, ou #ff2fae si tu veux + fort */
-
-    /* Flou intense sur les bords */
-    filter: blur(50px);
-
-    z-index: -1;
-    pointer-events: none;
+    content: "(";
+    left: 0;
 }
+
+.chapter-title::after {
+    content: ")";
+    right: 0;
+}
+
 
 
 .section h3 {
-    position: relative;
-    display: inline-block;
-    z-index: 1; /* pour que le halo soit derrière */
-
-    margin-top: 1rem;
-    margin-bottom: 1.5rem;
     font-family: "PP Neue Montreal";
     font-weight: 300;
-    font-size: 1.4rem;
+    position: relative;
+
+    display: block;          
+    width: 80%;      
+    padding: 0 25px;         
+    margin: 10px 0px;
+
+    font-size: 1.5rem;
     line-height: 1.2;
     text-transform: uppercase;
-    color: #f7dcf0; 
-    text-align: left;
+    text-align: center;         
+    color: #ff2fae;
+    z-index: 1;
+
+    hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
 }
 
-/* halo discret derrière les h3 */
-.section h3::before {
-    content: "";
-    position: absolute;
+.section h3::before,
+.section h3::after{
+position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ff2fae; 
+    opacity: 1; 
+}
 
+.section h3::before{
+    content: "(";
+    left: 0;
+}
 
-    /* petite bande lumineuse */
-    width: 110%;
-    height: 130%;
-    left: -5%;
-    top: -15%;
-
-    border-radius: 15px;
-
-    /* rectangle rose doux */
-    background: #ec3895;
-
-    /* flou plus discret que les h2 */
-    filter: blur(10px);
-
-    opacity: 0.60; /* plus subtil */
-    z-index: -1;
-    pointer-events: none;
+.section h3::after{
+    content: ")";
+    right: 0;
 }
 
 
 
-/* ------------------------------------------------------ */
-/*               COLONNE DROITE FIXE                      */
-/* ------------------------------------------------------ */
 
 #memoire-right {
     width: 40%;
@@ -468,22 +427,15 @@ word-break: normal;
 
 }
 
-/* ------------------------------------------------------ */
-/*                TABLE DES MATIÈRES                      */
-/* ------------------------------------------------------ */
 
-
-
-/* texte vertical en blanc/beige léger */
 .toc-label-vertical {
     writing-mode: vertical-rl;
-    transform: rotate(180deg);  /* pour que le texte se lise de bas en haut */
+    transform: rotate(180deg); 
     
-    color: #f7dcf0;
+    color: #f5dcec;
     font-family: "HAL Timezone";
     font-size: 32px;
     font-weight: 400;
-    letter-spacing: 0.02em;
 
     opacity: 0.95;
     text-align: center;
@@ -491,12 +443,8 @@ word-break: normal;
 
 
 
-/* ------------------------------------------------------ */
-/*                       IPHONE                           */
-/* ------------------------------------------------------ */
-
 #iphone-wrapper {
-    width: 350px;            /* la largeur que TU veux */
+    width: 350px;         
     height: 650px;
     position: relative;
     margin-top: 0.5rem;
@@ -507,22 +455,20 @@ word-break: normal;
 #iphone-svg {
     width: 100%;
     height: 100%;
-    object-fit: fill;     /* important */
+    object-fit: fill; 
     position: absolute;
     top: 0;
     left: 0;
 
-    stroke: #E01A4F !important;
+    stroke: #e4215d !important;
     fill: transparent !important;
 
-    filter: invert(70%) sepia(40%) saturate(900%) hue-rotate(290deg) brightness(105%) contrast(101%);
 
     position: relative;
     z-index: 3;
 }
 
 
-/* --- zone intérieure où les vidéos apparaissent --- */
 
 #iphone-screen {
     position: absolute;
@@ -550,17 +496,15 @@ word-break: normal;
 #iphone-block {
     display: flex;
     flex-direction: column;
-    align-items: center;   /* centre iPhone + boutons ensemble */
+    align-items: center; 
     width: 100%;
 }
 
-/* ------------------------------------------------------ */
-/*               NOTES DE BAS DE PAGE                     */
-/* ------------------------------------------------------ */
+
 
 sup {
     cursor: pointer;
-    color: #ff77cb;
+    color: #ff2fae;
     font-size: 1rem;
     line-height: 1;
     position: relative;
@@ -568,11 +512,11 @@ sup {
     left: 0em;
 }
 
-sup:hover {
-    color: #E01A4F;
+sup.trigger-active {
+    color: #e4215d;
 }
 
-/* bubble */
+
 
 #note-popup {
     position: absolute;
@@ -586,15 +530,14 @@ sup:hover {
    font-family: "HAL Timezone";
    font-size: 1rem;
    line-height: 1.30;
-   color: #ec3895;
+   color: #ff2fae;
 
 
-    /* animation */
     opacity: 0;
     transform: scale(0.9);
     transition: opacity 0.25s ease, transform 0.25s ease;
 
-    z-index: 999; /* AU-DESSUS DE TOUT */
+    z-index: 999;
     pointer-events: none;
 }
 
@@ -608,17 +551,17 @@ sup:hover {
     position: absolute;
     inset: 0;
 
-    /* même couleur que ton contour */
 
-    background: #f7dcf0; /* beige rosé, très doux */
+
+    background: #f5dcec; 
 
 
     box-shadow:
-        0 0 60px #ec3895,
+        0 0 60px #ff2fae,
         0 0 120px rgba(255,176,210,0.6),
         0 0 160px rgba(255,176,210,0.4);
 
-    /* placé sous la bulle */
+
     z-index: -1;
 }
 
@@ -665,8 +608,8 @@ sup:hover {
 video:fullscreen {
     width: 100%;
     height: auto;
-    object-fit: contain;   /* respecte le ratio original */
-    background: black;     /* optionnel, pour éviter les bandes blanches */
+    object-fit: contain;  
+    background: black; 
 }
 
 /* Safari */
@@ -677,14 +620,11 @@ video::-webkit-full-screen {
     background: black;
 }
 
-/* ========================= */
-/*   STYLE DES COMMANDES     */
-/* ========================= */
 
 #iphone-controls {
     display: flex;
-    justify-content: center;   /* centre horizontalement */
-    align-items: center;        /* au cas où */
+    justify-content: center; 
+    align-items: center;   
     gap: 12px;
     margin-top: 1rem;
     margin-left: -50px;
@@ -706,47 +646,45 @@ video::-webkit-full-screen {
 
     transition: transform 0.15s ease, opacity 0.15s ease;
 
-    filter: drop-shadow(0 0 6px rgba(255,176,210,0.45));
+    
 }
 
-/* SVG taille homogène */
+
 .control-btn img {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    filter: invert(70%) sepia(40%) saturate(900%) hue-rotate(290deg) brightness(105%) contrast(101%);
-    /* = filtre rose déjà utilisé pour ton iPhone SVG */
 }
 
-/* hover */
+
 .control-btn:hover {
-    transform: scale(1.15);
+    transform: scale(1.3);
     opacity: 1;
-filter: brightness(0) saturate(200%) invert(39%) sepia(96%) saturate(2650%) hue-rotate(315deg) brightness(105%) contrast(103%);
+    filter:sepia(60%) brightness(160%) contrast(101%);
 }
 
-/* Effet pour les passages qui déclenchent une vidéo */
+
 .video-trigger {
     cursor: pointer;
     color: inherit;
     transition: color 0.2s ease, text-shadow 0.3s ease;
-    text-shadow: 0 0 5px #E01A4F70;
+    text-shadow: 0 0 5px #ff2fae80;
 }
 
 
-/* style quand on survole */
-.video-trigger:hover {
-    color: #ff2fae; /* rose du site */
+
+.video-trigger.trigger-active {
+    color: #ff2fae;
     text-shadow:
         0 0 8px rgba(255,176,210,0.8),
         0 0 20px rgba(255,176,210,0.5);
 }
 
-/* Bouton de surlignage (discret) */
+
 #highlight-btn {
-    position: absolute;   /* au lieu de fixed */
+    position: absolute;  
     background: #FFB0D2;
-    color: #f7dcf0;
+    color: #f5dcec;
     border: none;
     border-radius: 12px;
     padding: 7px 14px;
@@ -758,48 +696,45 @@ filter: brightness(0) saturate(200%) invert(39%) sepia(96%) saturate(2650%) hue-
     display: none;
 }
 
-/* Style du surlignage */
+
 mark.custom-highlight {
     background: rgb(255, 245, 135);
 padding-top: 1px;
 padding-bottom: 1px;
-    color: #474642;
+    color: #862149;
 }
 
-/* ===== GLOW ROSE DOUX & TRANSITION ===== */
+
 #iphone-wrapper {
-    transition: filter 0.5s ease-out; /* transition douce globalisée */
+    transition: filter 0.5s ease-out;
 }
 
 #iphone-wrapper.glow {
-    /* glow réduit et plus fin */
-    filter: drop-shadow(0 0 8px #E01A4F) drop-shadow(0 0 16px #ff68c5);
+
+    filter: drop-shadow(0 0 8px #f5dcec) drop-shadow(0 0 10px #e5bada) drop-shadow(0 0 12px #ff2fae);
 }
 
 .center-text {
     text-align: center;
-    display: block; /* obligatoire pour que le span puisse se centrer */
+    display: block; 
     width: 100%;
 }
 
 .exp {
-  font-size: 0.6em;      /* taille de l’exposant */
-  vertical-align: super; /* monte l’exposant */
+  font-size: 0.6em; 
+  vertical-align: super; 
   line-height: 1;  
-  font-weight: normal;   /* pour éviter le style notes */
+  font-weight: normal;   
 }
 
-/* =========================================== */
-/*      GRAND PANNEAU DE SOMMAIRE — FIGMA      */
-/* =========================================== */
 
 #toc-overlay {
     position: fixed;
     inset: 0;
 
     display: flex;
-    justify-content: center;   /* centre horizontal */
-    align-items: center;       /* centre vertical */
+    justify-content: center;  
+    align-items: center;    
 
     pointer-events: none;
     background: rgba(0,0,0,0);
@@ -810,21 +745,33 @@ padding-bottom: 1px;
 .toc-panel {
     width: 70%;
     max-width: 1200px;
-    background: #f7dcf0;
-    border-radius: 40px;
-    border: 2px solid rgba(255,176,210,0.4);
+    background: radial-gradient(
+        250% 300% at 120% 70%,
+        #e4215d98 5%,
+        #ff2fae95 25%,
+        #e5bada 55%,
+        #f5dcec 70%
+    ),
+    #f5dcec;
+
     padding: 80px;
 
     box-shadow:
-        0 0 60px #ec3895,
-        0 0 120px rgba(255,176,210,0.6),
-        0 0 160px rgba(255,176,210,0.4);
+        0 0 60px #f5dcec,
+        0 0 120px #e5bada,
+        0 0 160px #ff2fae;
 
-    transform: translateX(150%); /* ✔ caché loin sur la droite */
-    opacity: 0;                 /* ✔ totalement invisible */
-    transition: transform 0.8s ease, opacity 0.3s ease;
+    opacity: 0; 
+    transform: translateX(150px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
 
-    pointer-events: none;       /* ✔ clique impossible quand fermé */
+    pointer-events: none;  
+}
+
+.toc-panel {
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s ease;
 }
 
 /* État ouvert */
@@ -834,8 +781,8 @@ padding-bottom: 1px;
 
 #toc-overlay.open .toc-panel {
     transform: translateX(0);
-    opacity: 1;               /* ✔ visible */
-    pointer-events: auto;     /* ✔ on peut cliquer dedans */
+    opacity: 1;  
+    pointer-events: auto;    
 }
 
 
@@ -843,10 +790,10 @@ padding-bottom: 1px;
 /* Colonnes internes */
 .toc-columns {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 colonnes */
+    grid-template-columns: repeat(3, 1fr); 
     gap: 60px;
-    justify-items: center;     /* centre chaque colonne dans sa case */
-    justify-content: center;   /* centre la grille entière */
+    justify-items: center;  
+    justify-content: center;  
 }
 
 .toc-column {
@@ -867,23 +814,37 @@ padding-bottom: 1px;
 #toc-overlay p {
     font-family: "HAL Timezone";
 
-    font-size: 24px;
-    color: #452c0e73;
-    text-align: center;
+    font-size: 16px;
+    color: #f5dcec80;
+    text-align:center;
     margin-bottom: 15px;
     cursor: pointer;
+
+    font-weight: 300;
     
 }
 
-#toc-overlay .sub {
-    font-size: 20px;
+
+
+#toc-overlay h3{
+    font-size: 22px;
+    color: #f5dcec;
+}
+
+#toc-overlay .sub{
+    color: #f5dcec;
 }
 
 #toc-overlay p:hover,
 #toc-overlay h3:hover {
     transform: scale(1.05);
-    color: #ec3895;
+    color: #f5dcec;
 }
+
+.toc-column p{
+    color:#ff2fae ;
+}
+
 
 .fix-italic {
     position: relative;
@@ -921,74 +882,6 @@ padding-bottom: 1px;
     
 }
 
-
-
-/* Petitte poignée rose arrondie */
-#toc-handle {
-    position: fixed;
-    right: 3%;
-    top: 80%;
-    transform: translateY(-50%) scale(1);
-    transform-origin: right center;
-
-    width: 80px;
-    height: 340px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: transform 0.3s ease;
-
-    cursor: pointer;
-
-    z-index: 999999;
-}
-
-/* Texte NON scalé */
-#toc-handle .toc-label {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg) translateX(20px) translateY(-5px); 
-    font-family: "HAL Timezone";
-    font-style: italic;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    color: #ec3895;
-    line-height: 1;
-
-
-    pointer-events: none; /* important pour le hover sur le handle entier */
-}
-
-/* Hover : seul le bookmark grandit */
-#toc-handle:hover {
-    transform: translateY(-80%) scale(2.7);
-
-    z-index: 9999999;
-}
-
-
-/* Bookmark SVG */
-#toc-bookmark {
-    width: 100%;
-    height: 100%;
-
-
-    position: absolute;
-
-
-transform-origin: right center; /* ou left center selon ton alignement */
-}
-
-#toc-handle img {
-    filter:
-        invert(90%) sepia(12%) saturate(900%) hue-rotate(280deg) brightness(105%) contrast(98%)
-        drop-shadow(0px 0px 12px #ec3895);
-
-        transform-origin: right center; /* ou left center selon ton alignement */
-}
-
-
-
 /* ======== ANIMATIONS FADE-IN + SLIDE-UP ======== */
 
 .section-fade {
@@ -1001,3 +894,2227 @@ transform-origin: right center; /* ou left center selon ton alignement */
     opacity: 1;
     transform: translateY(0);
 }
+
+.toc-paren {
+    padding: 0 15px; /* ajuste la valeur */
+    font-family: "PP Neue Montreal";
+}
+
+.toc-parent {
+    padding: 0 15px; /* ajuste la valeur */
+    font-family: "PP Neue Montreal";
+}
+
+.biblio {
+    list-style: none;
+    position: relative;
+    padding-left: 60px;    /* décale le texte */
+
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+
+    word-break: normal;         /* évite les coupures bizarres */
+    overflow-wrap: normal;      /* évite les sauts forcés */
+    white-space: normal;
+}
+
+.biblio::before {
+    content: "(\00A0\00A0\00A0\00A0)";  
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: "PP Neue Montreal";   /* pour matcher ton style */
+    color: #ff2fae;                /* même rose que ton site */
+}
+
+.lienbiblio{
+    color: #862149;
+    text-decoration: none;
+}
+
+.lienbiblio:visited{
+    color: #862149;
+}
+
+.lienbiblio:hover{
+    color: #ff2fae;
+}
+
+
+/* ============================
+   ANNEXE VIDÉO — GRILLE
+   ============================ */
+
+#video-annex-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 20px;
+    margin-top: 2rem;
+}
+
+.annex-thumb {
+    position: relative;
+    cursor: pointer;
+    width: 100%;
+    aspect-ratio: 9 / 16;   /* 🔥 impose une hauteur uniforme */
+    overflow: hidden;       /* coupe proprement le débordement */
+    transition: box-shadow 0.3s ease;   /* ← nouveau */
+}
+
+.annex-thumb video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* 🔥 crop propre, pas de déformation */
+    transition: transform 0.2s ease;
+    opacity: 50%;
+}
+
+.annex-thumb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #ff2fae; /* rose BookTok */
+    mix-blend-mode: screen;               /* mélange plus doux */
+    opacity: 80%;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+}
+
+.annex-thumb:hover {
+    box-shadow: 0 0 40px #ff2fae;
+}
+
+.annex-thumb:hover video {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.annex-thumb:hover::before {
+    opacity: 0; /* disparition du filtre au hover */
+}
+
+.annex-number {
+    position: absolute;
+    bottom: 0px;
+    right: 8px;
+
+    /* PLUS DE FOND, NI DE BULLE */
+    background: transparent;
+    padding: 0;
+
+    /* STYLE DU TEXTE */
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 22px;
+    color: #f5dcec; /* clair */
+
+    /* SHADOW FONCÉ POUR LE CONTRASTE */
+    text-shadow:
+        0 0 4px #862149,
+        0 0 8px #862149,
+        0 0 12px #862149;
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+.annex-number::before {
+    content: "(\00A0";
+}
+
+.annex-number::after {
+    content: "\00A0)";
+}
+
+
+/* ============================
+   MODALE
+   ============================ */
+
+#video-modal.hidden {
+    display: none;
+}
+
+#video-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.video-modal-content {
+    background: #f5dcec;
+    padding: 30px;
+    width: 640px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 40px #ff2fae;
+    display: flex;             /* ➜ 2 colonnes */
+    gap: 30px;
+}
+
+/* Colonne vidéo */
+.video-modal-left {
+    flex: 0.8;
+}
+
+#video-modal-player {
+    width: 100%;
+}
+
+/* Colonne infos */
+.video-modal-right {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.video-modal-right {
+    hyphens: none;
+    -webkit-hyphens: none;
+    -ms-hyphens: none;
+
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+#video-modal-close {
+    cursor: pointer;
+    font-size: 28px;
+    float: right;
+    color: #ff2fae;
+}
+
+.video-modal-right p,
+.video-modal-right a{
+    font-size: 16px;
+    text-align: left;
+    line-height: 1.2;
+    
+}
+
+.video-modal-right a{
+    font-size: 12px;
+    color: #862149;
+    text-decoration: none;
+}
+
+.video-modal-right a:visited{
+    color: #862149;
+}
+
+.video-modal-right a:hover{
+    color: #ff2fae;
+}
+
+
+#video-modal-title {
+    position: relative;
+    display: inline-block;
+    font-family: "HAL Timezone";
+    font-size: 16px;
+    line-height: 1.2;
+    color: #862149;
+    text-shadow: 0 0 5px #ff2fae80;
+    text-align: center;
+    padding: 0 22px; 
+}
+
+#video-modal-title::before,
+#video-modal-title::after {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 16px;
+
+    color: #e4215d;
+    opacity: 0.9;
+
+    pointer-events: none;
+}
+
+#video-modal-title::before {
+    content: "(";
+    left: 0;
+    text-shadow: none;
+}
+
+#video-modal-title::after {
+    content: ")";
+    right: 0;
+    text-shadow: none;
+}
+
+#video-modal-stats p {
+    margin: 2px 0;        /* ← très serré */
+    line-height: 1.2;     /* ← compact */
+}
+
+#video-modal-description {
+    margin-top: 32px;
+    font-size: 15px;
+    opacity: 1;
+    max-width: 90%;
+    margin: 12px auto 20px auto;
+    text-align: center;
+}
+
+
+#video-modal-description::before {
+    content: "«\2009";
+}
+
+#video-modal-description::after {
+    content: "\2009»";
+}
+
+
+#video-modal-user,
+#video-modal-date,
+#video-modal-stats {
+    font-weight: 300;
+    font-size: 12px;
+    opacity: 1;
+}
+
+#video-modal-stats p {
+    font-size: 12px;
+    margin: 0;
+    line-height: 1.1;
+}
+
+#video-modal-stats-note {
+    margin-top: auto;   /* 🔥 pousse l’élément en bas */
+    font-size: 10px;
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    opacity: 0.8;
+    text-align: center;
+    padding-top: 12px;
+}
+
+
+#video-modal-stats-note::before { content: "("; }
+#video-modal-stats-note::after  { content: ")"; }
+
+
+
+
+
+/* OVERLAY CENTRAL POUR image-trigger */
+#hover-image-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    z-index: 999999;
+}
+
+#hover-image-overlay.visible {
+    opacity: 1;
+    pointer-events: auto;
+    justify-content: flex-end;
+    padding-right: 140px; /* ajuste si tu veux */
+}
+
+#hover-image-large {
+    max-width: 90vw;
+    max-height: 90vh;
+    border: 5px solid #ff2fae;
+}
+
+
+/*.image-trigger {
+    text-decoration: underline;
+    text-decoration-color: #ff2fae;
+    text-decoration-thickness: 1.4px;
+    text-decoration-style:wavy;
+}*/
+
+.image-trigger {
+    background-color: #ff2fae;
+    padding: 2px 4px;
+    color: #f5dcec;
+}
+
+
+/* --- NOUVELLE POIGNÉE SOMMAIRE --- */
+
+#toc-handle {
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: transform 0.3s ease;
+}
+
+
+/* Effet au survol */
+#toc-handle:hover #toc-text {
+    color: #e4215d;
+    font-style: italic;
+    opacity: 1;
+}
+
+
+/* Ajout des parenthèses autour du texte vertical */
+#toc-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "HAL Timezone";
+    font-size: 22px;
+    color: #ff2fae;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    pointer-events: none;
+
+    white-space: nowrap;
+    text-shadow: 
+    0 0 4px #f5dcec,
+    0 0 10px #f5dcec;
+}
+
+.parenthese {
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 24px;
+}
+
+/* Paragraphe avec parenthèses décoratives */
+p.deco {
+    position: relative;
+    text-indent: 74px;     /* alinéa uniquement sur la première ligne */
+}
+
+/* Parenthèses décoratives */
+p.deco::before {
+    content: "(\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0)";
+    font-family: "PP Neue Montreal";
+    position: absolute;
+    left: -74px;
+    top: 1px;
+
+    font-size: 1.2rem;
+    color: #ff2fae;
+}
+
+#fullpage {
+    overflow-y: scroll;
+    scrollbar-width: none !important; /* Firefox */
+}
+
+#fullpage::-webkit-scrollbar {
+    width: 0 !important;
+    display: none !important; /* Chrome/Safari */
+}
+
+html::-webkit-scrollbar {
+    width: 18px;
+}
+
+
+html::-webkit-scrollbar-thumb {
+    background: #FFB0D2; /* rose pastel */
+    border-radius: 10px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #ff2fae;
+}
+
+#bibliographie{
+    font-size: 16px;
+}
+
+#bibliographie li {
+    margin-bottom: 20px; /* ajuste la valeur comme tu veux */
+}
+
+#conclusion {
+    margin-top: 120px; /* ajuste la valeur comme tu veux */
+}
+
+#introduction {
+    margin-top: 120px; /* ajuste la valeur comme tu veux */
+}
+
+#bibliographie {
+    margin-top: 120px; /* ajuste la valeur comme tu veux */
+}
+
+#annexes {
+    margin-top: 120px; /* ajuste la valeur comme tu veux */
+}
+
+#remerciements {
+    margin-top: 120px; /* ajuste la valeur comme tu veux */
+}
+
+#copyright-button {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: "HAL Timezone";
+    font-size: 22px;
+    color: #ff2fae;
+    cursor: pointer;
+    margin-bottom: 40px; /* ajuste la valeur comme tu veux */
+
+    text-shadow:
+        0 0 4px #f5dcec,
+        0 0 10px #f5dcec;
+
+    z-index: 99999;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+#copyright-button:hover {
+    color: #e4215d;
+    font-style: italic;
+    opacity: 1;
+}
+
+#colophon-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.4s ease;
+    z-index: 999999;
+}
+
+#colophon-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* panneau interne */
+.colophon-panel {
+    width: 60%;
+    max-width: 800px;
+    padding: 60px;
+
+    background: radial-gradient(
+        250% 300% at 120% 70%,
+        #e4215d98 5%,
+        #ff2fae95 25%,
+        #e5bada 55%,
+        #f5dcec 70%
+    ),
+    #f5dcec;
+
+    box-shadow:
+        0 0 18px #f5dcec,
+        0 0 55px #e5bada,
+        0 0 90px #ff2fae;
+
+
+    opacity: 0;
+    transform: translateX(150px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#colophon-overlay.open .colophon-panel {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.colophon-panel h2 {
+    color: #f5dcec80;
+    font-family: "HAL Timezone";
+    font-weight: 300;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.colophon-panel p {
+    color: #f5dcec;
+    font-family: "HAL Timezone";
+    font-weight: 300;
+    line-height: 1.4;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+#sidebar-alignment {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 30px; /* ← seul endroit où on règle l'alignement */
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none; /* pour laisser tes boutons interactifs */
+    z-index: 99999;
+}
+
+/* On réactive le pointer-events sur chaque bouton */
+#sidebar-alignment > * {
+    pointer-events: auto;
+}
+
+.toc-center-wrapper {
+    flex: 1;                   /* occupe tout l’espace disponible */
+    display: flex;
+    justify-content: center;   /* centre verticalement */
+    align-items: center;       /* centre horizontalement */
+}
+
+/* ============================
+   ANNEXE IMAGES — GRILLE
+   ============================ */
+
+#image-annex-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* exactement comme les vidéos */
+    margin-top: 2rem;
+}
+
+/* conteneur */
+.image-annex-thumb {
+    position: relative;
+    cursor: pointer;
+    height: 160px;               /* 🔥 HAUTEUR FIXE */
+    width: fit-content;          /* 🔥 largeur selon l’image */
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+/* image */
+.image-annex-thumb img {
+    height: 100%;      /* garde la hauteur fixe du parent */
+    width: auto;       /* 🔥 largeur proportionnelle */
+    object-fit: contain;
+    display: block;
+    opacity: 0.5;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* filtre rose (copié des vidéos) */
+.image-annex-thumb::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #ff2fae;
+    mix-blend-mode: screen;
+    opacity: 0.8;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 3;
+}
+
+/* hover */
+.image-annex-thumb:hover {
+    box-shadow: 0 0 40px #ff2fae;
+}
+
+.image-annex-thumb:hover img {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.image-annex-thumb:hover::before {
+    opacity: 0;
+}
+
+.image-annex-number {
+    position: absolute;
+    bottom: 0px;
+    right: 8px;
+
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 22px;
+    color: #f5dcec;
+
+    text-shadow:
+        0 0 4px #862149,
+        0 0 8px #862149,
+        0 0 12px #862149;
+
+    z-index: 5;
+    pointer-events: none;
+}
+
+.image-annex-number::before { content: "(\00A0"; }
+.image-annex-number::after  { content: "\00A0)"; }
+
+
+
+#hover-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+#hover-image-caption {
+    font-family: "PP Neue Montreal";
+    font-size: 14px;
+    color: #f5dcec;
+    text-align: center;
+    max-width: 80%;
+    line-height: 1.3;
+}
+
+#hover-image-caption::before { content: "("; }
+#hover-image-caption::after  { content: ")"; }
+
+
+
+/* ============================
+   MODALE IMAGE — ANNEXE
+   ============================ */
+
+#image-modal.hidden {
+    display: none;
+}
+
+#image-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999;
+}
+
+.image-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+#image-modal-img {
+    max-width: 90vw;
+    max-height: 80vh;
+    object-fit: contain;
+
+    border: 5px solid #ff2fae;
+    box-shadow: 0 0 40px #ff2fae;
+}
+
+#image-modal-caption {
+    font-family: "PP Neue Montreal";
+    font-weight: 300;
+    font-size: 14px;
+    color: #f5dcec;
+    text-align: center;
+    line-height: 1.3;
+}
+
+#image-modal-caption::before { content: "(\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0"; }
+#image-modal-caption::after  { content: "\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0\00A0)"; }
+
+/* ================================ */
+/*     REMERCIEMENTS — PLEINE PAGE  */
+/* ================================ */
+
+#remerciements {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+#remerciements .ap-card {
+  text-align: center;
+}
+
+#remerciements .ap-card-text {
+  font-size: 1rem;   /* ajuste comme tu veux */
+  line-height: 1.4;
+}
+
+.ppneuemontreal{
+    font-family: "PP Neue Montreal";
+}
+
+.hero-top-infos {
+position: absolute;
+top: 5%;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 20px;
+color: #e4215d;
+}
+
+.hero-top-text {
+    font-family: "HAL Timezone";
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.hero-top-text p {
+  margin: 0;
+}
+
+
+.hero-author {
+  position: absolute;
+  bottom: 5%;
+  width: 100%;
+  color: #e4215d;
+  opacity: 1;
+  font-family: "HAL Timezone";
+  text-align: center;
+  font-size: 24px;
+  font-weight: 300;
+}
+
+.paren-block {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* 🔥 centre visuellement */
+  gap: 240px;          /* 🔥 BEAUCOUP PLUS ESPACÉ */
+  pointer-events: none;
+}
+
+.hero-top-infos {
+  top: 6%;
+  color: #e4215d;
+}
+
+.hero-author-wrapper {
+  bottom: 6%;
+  color: #e4215d;
+}
+
+
+
+.hero-top-text {
+  font-size: 24px;
+  line-height: 1.1;   /* 🔥 réduit */
+  text-align: center;
+}
+
+.hero-author {
+  font-size: 24px;
+  line-height: 1.1;   /* 🔥 IDENTIQUE */
+  margin: 0;
+}
+
+:root {
+  --paren-width: 640px; /* ← même X en haut et en bas */
+}
+
+
+.hero-paren-row {
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.hero-paren {
+  position: absolute;
+  font-family: "PP Neue Montreal";
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 1;
+}
+
+:root {
+  --paren-width: 640px; /* 🔥 même largeur en haut et en bas */
+}
+
+/* groupe avec parenthèses */
+.paren-group {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--paren-width);
+
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* parenthèses */
+.paren-group::before,
+.paren-group::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "PP Neue Montreal";
+  font-weight: 300;
+  font-size: 24px;
+  color: #e4215d;
+  pointer-events: none;
+}
+
+.paren-group::before {
+  content: "(";
+  left: 0;
+}
+
+.paren-group::after {
+  content: ")";
+  right: 0;
+}
+
+.hero-top-infos {
+  top: 6%;
+}
+
+.hero-author-wrapper {
+  bottom: 6%;
+}
+
+/* correction visuelle spécifique au nom */
+.paren-author::before,
+.paren-author::after {
+  transform: translateY(-100%); /* 🔥 remonte légèrement */
+}
+
+.hero-top-text,
+.hero-author {
+  font-family: "HAL Timezone";
+  font-size: 24px;
+  line-height: 1.1;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  #memoire-right {
+    display: none;
+  }
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+
+  max-width: 90%;
+  max-height: 80%;
+  padding: 20px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* ============================================================
+   RESPONSIVE — CLEAN (desktop intact / mobile lisible)
+   ============================================================ */
+
+/* 1) TABLETTE : on simplifie la colonne droite si besoin */
+@media (max-width: 1100px) {
+  /* tu avais déjà ce comportement, on le garde */
+  #memoire-right { display: none; }
+  #memoire-left  { width: 100%; padding: 3rem 3rem 8rem 3rem; padding-right: 3rem; }
+}
+
+/* 2) MOBILE + TABLETTE : lecture continue, plus de "slides" */
+@media (max-width: 900px) {
+
+  /* --- éviter le scroll piégé iOS (snap + 100vh) --- */
+  #fullpage {
+    height: auto;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+  #fullpage section {
+    height: auto;
+    min-height: 0;
+    scroll-snap-align: none;
+  }
+
+  /* --- layout principal --- */
+  #memoire {
+    display: block;
+    min-height: auto;
+  }
+  #memoire-left {
+    width: 100%;
+    padding: 24px 18px 80px 18px;
+    overflow-x: hidden;
+  }
+  #memoire-right { display: none; }
+
+  /* --- typo globale mobile --- */
+  body { -webkit-overflow-scrolling: touch; }
+  p { font-size: 16px; line-height: 1.6; }
+  h1, h2, h3 { line-height: 1.15; }
+
+  /* =========================================================
+     HERO (IDs + tes classes existantes)
+     ========================================================= */
+
+  #hero {
+    height: auto;                 /* remplace 100vh sur mobile */
+    min-height: 100svh;           /* plus fiable que 100vh sur iOS */
+    padding: 72px 16px 56px 16px; /* respiration */
+  }
+
+  /* labels haut gauche / haut droite : on les met en "flow" (plus safe) */
+  .hero-top,
+  .hero-year {
+    position: static;
+    font-size: 14px;
+    line-height: 1.1;
+    text-align: center;
+    margin: 0;
+  }
+  .hero-top { margin-bottom: 10px; }
+  .hero-year { margin-bottom: 22px; }
+
+  /* bloc titre */
+  .hero-center {
+    margin-top: 0;                 /* enlève le -60px desktop */
+    max-width: 92vw;
+  }
+  .hero-center h1 {
+    font-size: clamp(34px, 9vw, 54px);
+    line-height: 0.95;             /* ton 0.5 desktop écrasait le titre */
+  }
+  .hero-subtitle {
+    font-size: 16px;
+    line-height: 1.25;
+    margin-top: 14px;
+  }
+
+  /* parenthèses haut/bas : on les passe en statique + on réduit la largeur */
+  :root { --paren-width: min(92vw, 520px); }
+
+  .paren-group {
+    position: static;
+    left: auto;
+    transform: none;
+    width: var(--paren-width);
+    margin: 0 auto;
+    padding: 0 18px;               /* espace pour les parenthèses */
+  }
+  .paren-group::before,
+  .paren-group::after {
+    font-size: 18px;
+  }
+
+  .hero-top-infos,
+  .hero-author-wrapper {
+    position: static;
+    top: auto; bottom: auto;
+    margin: 18px 0;
+  }
+
+  .hero-top-text,
+  .hero-author {
+    font-size: 16px;
+    line-height: 1.15;
+  }
+
+  /* =========================================================
+     AVANT-PROPOS
+     ========================================================= */
+
+  #avant-propos {
+    padding: 44px 0;
+    height: auto;
+  }
+
+  .ap-card {
+    width: min(92vw, 720px);
+    max-width: none;
+    padding: 22px 18px;
+    border-radius: 26px;
+    gap: 18px;
+    flex-direction: column; /* icônes au-dessus, texte dessous */
+  }
+
+  .ap-card-icons {
+    gap: 18px;
+  }
+  .ap-card-icons img {
+    height: 84px; /* beaucoup plus raisonnable sur mobile */
+  }
+
+  .ap-card-text {
+    font-size: 16px;
+    line-height: 1.55;
+  }
+
+  /* parenthèses décoratives : réduire + rapprocher */
+  .ap-card::before,
+  .ap-card::after {
+    font-size: clamp(42px, 14vw, 72px);
+  }
+  .ap-card::before { left: -14px; }
+  .ap-card::after  { right: -14px; }
+
+  /* =========================================================
+     MODALES / OVERLAYS
+     ========================================================= */
+
+  .modal-content,
+  .video-modal-content,
+  .image-modal-content {
+    width: 100%;
+    max-width: none;
+    max-height: 90svh;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* =========================================================
+     ANNEXES : 1 colonne
+     ========================================================= */
+
+  .video-annex-grid,
+  .image-annex-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* =========================================================
+     CIBLES TACTILES (confort)
+     ========================================================= */
+
+  button,
+  .video-trigger,
+  .image-trigger,
+  sup[data-note] {
+    min-height: 44px;
+  }
+}
+
+/* 3) TRÈS PETITS TÉLÉPHONES : on allège encore */
+@media (max-width: 420px) {
+  .ap-card::before,
+  .ap-card::after { display: none; } /* sinon ça étouffe */
+  .hero-subtitle { font-size: 15px; }
+}
+
+/* ============================================================
+   SOMMAIRE — MOBILE : VERSION SIMPLE (DÉFINITIVE)
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  /* on cache TOUT le sommaire desktop */
+  #toc-overlay * {
+    display: none !important;
+  }
+
+  /* overlay */
+  #toc-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+
+    z-index: 9999;
+  }
+
+  /* quand il est ouvert */
+  body.toc-open #toc-overlay {
+    display: block;
+  }
+
+
+
+  #toc-overlay .toc-panel ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+
+
+}
+
+@media (max-width: 768px) {
+  body,
+  #fullpage {
+    height: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+
+@media (max-width: 768px) {
+
+  #hero {
+    min-height: 100svh;
+    padding: 32px 16px;
+  }
+
+  .hero-center h1 {
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .hero-author {
+    font-size: 14px;
+    margin-top: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+
+  #avant-propos {
+    padding: 24px 16px;
+  }
+
+  .ap-card {
+    max-width: 100%;
+    padding: 20px;
+  }
+
+  .ap-card-text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* ============================================================
+   MOBILE ONLY — CORRECTIONS DÉFINITIVES
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  /* ------------------------------------------------------------
+     1. TABLE DES MATIÈRES — RESET TOTAL
+     ------------------------------------------------------------ */
+
+  /* on annule TOUT le layout desktop */
+  #toc-overlay,
+  #toc-overlay * {
+    position: static !important;
+    transform: none !important;
+    writing-mode: horizontal-tb !important;
+    rotate: none !important;
+    inset: auto !important;
+  }
+
+  /* on cache complètement le sommaire desktop */
+  #toc-overlay {
+    display: none;
+  }
+
+  /* version mobile simple quand ouvert */
+  body.toc-open #toc-overlay {
+    display: block;
+    position: fixed !important;
+    inset: 0 !important;
+    z-index: 9999;
+    overflow-y: auto;
+  }
+
+  body.toc-open #toc-overlay .toc-panel {
+    padding: 24px 20px 40px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  body.toc-open #toc-overlay ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  body.toc-open #toc-overlay li {
+    font-size: 15px;
+    line-height: 1.4;
+    color: #ff005d;
+    text-align: left;
+  }
+
+  /* on supprime TOUS les éléments décoratifs */
+  #toc-overlay .paren,
+  #toc-overlay .vertical,
+  #toc-overlay .rotated,
+  #toc-overlay .toc-label {
+    display: none !important;
+  }
+
+  /* ------------------------------------------------------------
+     2. COLOPHON — LECTURE MOBILE
+     ------------------------------------------------------------ */
+
+  #colophon-overlay {
+    padding: 20px 16px;
+  }
+
+  #colophon-panel {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 20px 18px;
+  }
+
+  #colophon-panel p,
+  #colophon-panel li {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  #colophon-panel h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+  }
+
+  /* ------------------------------------------------------------
+     3. HERO — HAUTEUR MOBILE ADAPTÉE
+     ------------------------------------------------------------ */
+
+  #hero {
+    min-height: auto !important;
+    height: auto !important;
+    padding-top: 48px;
+    padding-bottom: 40px;
+  }
+
+  #hero .hero-top-text {
+    font-size: 13px;
+    margin-bottom: 12px;
+  }
+
+  #hero .hero-center h1 {
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05;
+    margin: 12px 0;
+  }
+
+  #hero .hero-subtitle {
+    font-size: 14px;
+    line-height: 1.35;
+    max-width: 26ch;
+    margin: 0 auto;
+  }
+
+  #hero .hero-author {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+}
+
+
+@media (max-width: 900px){
+  #colophon-panel{
+    width: min(92vw, 520px);
+    padding: 18px 16px;
+  }
+  #colophon-panel p,
+  #colophon-panel li{
+    font-size: 14px;
+    line-height: 1.45;
+  }
+}
+
+@media (max-width: 900px){
+  #hero{
+    min-height: 100svh;   /* mieux que 100vh sur iOS */
+    padding: 44px 18px 28px;
+  }
+  #hero .hero-center{
+    margin-top: 0 !important;
+  }
+  #hero .hero-center h1{
+    font-size: clamp(30px, 8vw, 44px);
+    line-height: 1.05 !important;
+  }
+}
+
+
+/* ============================================================
+   SOMMAIRE MOBILE — VERSION TEXTE
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  #toc-mobile {
+    position: fixed;
+    inset: 0;
+
+    z-index: 100000;
+    overflow-y: auto;
+  }
+
+  #toc-mobile.hidden {
+    display: none;
+  }
+
+  .toc-mobile-panel {
+    padding: 32px 20px 48px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .toc-mobile-panel h2 {
+    font-size: 18px;
+    margin-bottom: 24px;
+    color: #ff005d;
+  }
+
+  .toc-mobile-panel ul {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .toc-mobile-panel li {
+    font-size: 16px;
+    line-height: 1.4;
+    color: #ff005d;
+    cursor: pointer;
+  }
+
+}
+
+@media (max-width: 900px){
+
+  #toc-mobile-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  #toc-mobile-list li{
+    cursor: pointer;
+    color: #ff005d;
+  }
+
+  .toc-main{
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 14px;
+  }
+
+  .toc-chapter{
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 12px;
+  }
+
+  .toc-sub{
+    font-size: 14px;
+    padding-left: 14px;
+    opacity: 0.85;
+  }
+
+}
+
+/* ============================================================
+   SOMMAIRE MOBILE — HÉRITAGE DE LA DA EXISTANTE
+   ============================================================ */
+
+@media (max-width: 900px){
+
+  #toc-mobile{
+    background: inherit; /* pas de fond artificiel */
+  }
+
+  #toc-mobile-list{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  #toc-mobile-list li{
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  /* niveaux */
+  .toc-main{
+    margin-top: 20px;
+  }
+
+  .toc-chapter{
+    margin-top: 12px;
+  }
+
+  .toc-sub{
+    padding-left: 18px;
+    opacity: 0.75;
+  }
+
+  /* parenthèses comme ailleurs */
+  .toc-main::before{
+    content: "(";
+    margin-right: 6px;
+    opacity: 0.6;
+  }
+
+  .toc-main::after{
+    content: ")";
+    margin-left: 6px;
+    opacity: 0.6;
+  }
+
+}
+
+
+/* ============================================================
+   NOTES — MOBILE (HÉRITAGE TOTAL)
+   ============================================================ */
+
+@media (max-width: 900px){
+
+  #note-modal{
+    background: rgba(0,0,0,0.4); /* déjà présent ailleurs */
+  }
+
+  #note-modal .modal-content{
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+}
+
+
+#note-popup{
+  font-family: inherit;
+  color: inherit;
+  font-size: 0.9em;
+  line-height: 1.45;
+}
+
+
+
+@media (max-width: 900px) {
+  .toc-chapter {
+    letter-spacing: -0.02em;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .toc-chapter {
+    line-height: 1.15;
+  }
+}
+
+
+@media (max-width: 900px) {
+  .toc-chapter {
+    text-transform: none;
+  }
+}
+
+/* ============================================================
+   NOTES DE BAS DE PAGE — MOBILE (DA COHÉRENTE)
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  #note-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(245, 220, 236, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+
+    pointer-events: auto; /* 🔥 clé */
+  }
+
+  .note-modal-content {
+    position: relative;
+    max-width: 520px;
+    width: 100%;
+    background: #f5dcec;
+    padding: 24px 22px 28px;
+
+    pointer-events: auto; /* 🔥 clé */
+  }
+
+  .note-modal-content {
+    font-family: "PP Neue Montreal";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ff2fae;
+  }
+
+  #note-modal .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-family: "PP Neue Montreal";
+    font-size: 12px;
+    color: #ff2fae;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  #note-modal .modal-close::before {
+    content: "( fermer )";
+  }
+
+  #note-modal .modal-close:hover {
+    opacity: 1;
+  }
+}
+
+
+@media (max-width: 900px) {
+  #note-modal {
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 900px) {
+  .note-modal-content {
+    pointer-events: auto;
+  }
+}
+
+/* ============================================================
+   NOTES DE BAS DE PAGE — MOBILE (SAFE & ISOLÉ)
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  #note-modal.hidden {
+    display: none;
+  }
+
+  #note-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+
+    background: rgba(245, 220, 236, 0.9);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    pointer-events: auto;
+  }
+
+  #note-modal-content {
+    position: relative;
+    max-width: 520px;
+    width: 100%;
+    padding: 24px 22px 28px;
+
+    background: #f5dcec;
+
+
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ff2fae;
+  }
+
+  #note-modal .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-family: "PP Neue Montreal";
+    font-size: 12px;
+    color: #ff2fae;
+    opacity: 0.6;
+  }
+
+  #note-modal .modal-close::before {
+    content: "( fermer )";
+  }
+
+  #note-modal .modal-close:hover {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  #note-modal-content {
+    box-shadow:
+      0 0 24px #ff2fae,
+      0 0 48px rgba(255,176,210,0.6),
+      0 0 72px rgba(255,176,210,0.4);
+  }
+}
+
+/* ============================================================
+   VIDEO MODAL — RESPONSIVE (mobile/tablette)
+   Desktop inchangé
+   ============================================================ */
+
+@media (max-width: 900px) {
+
+  #video-modal {
+    padding: 16px;                 /* évite que ça colle aux bords */
+    align-items: flex-start;        /* plutôt que center */
+  }
+
+  .video-modal-content {
+    width: 100%;
+    max-width: 680px;
+    max-height: 90svh;             /* iOS friendly */
+    overflow-y: auto;
+
+    padding: 18px;
+    gap: 16px;
+
+    display: flex;
+    flex-direction: column;        /* 🔥 plus de 2 colonnes */
+  }
+
+  .video-modal-left,
+  .video-modal-right {
+    flex: none;
+    width: 100%;
+  }
+
+  /* vidéo: garde un ratio propre */
+  #video-modal-player {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* texte / hiérarchie */
+  #video-modal-title {
+    font-size: 15px;
+    line-height: 1.2;
+    padding: 0 18px;
+  }
+
+  .video-modal-right p,
+  .video-modal-right a {
+    font-size: 14px;
+    line-height: 1.35;
+    text-align: left;
+  }
+
+  #video-modal-user,
+  #video-modal-date,
+  #video-modal-stats {
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  #video-modal-description {
+    font-size: 13px;
+    max-width: 100%;
+    margin: 10px 0 14px 0;
+    text-align: left;              /* plus lisible sur mobile */
+  }
+
+  /* bouton fermer : toujours accessible */
+  #video-modal-close {
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
+    font-size: 26px;
+    line-height: 1;
+    z-index: 2;
+  }
+}
+
+
+
+#note-popup,
+#note-modal-content {
+  color: #ff2fae;
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+
+#toc-overlay {
+  display: none !important;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+}
+
+/* Visible uniquement quand ouvert */
+body.toc-open #toc-overlay {
+  display: flex !important;
+}
+
+
+@media (min-width: 901px) {
+  body.toc-open #toc-overlay {
+    background: rgba(255, 245, 250, 0.98);
+  }
+}
+
+
+#toc-mobile {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #toc-mobile {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: #f5dcec;
+    overflow-y: auto;
+    padding: 24px 20px 40px;
+    display: block;
+  }
+
+  #toc-mobile.hidden {
+    display: none !important;
+  }
+
+  #toc-mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  #toc-mobile-list li {
+    list-style: none;
+    cursor: pointer;
+    font-weight: normal;
+    line-height: 1.3;
+    color: #ff2fae;
+  }
+
+  .toc-main {
+    font-family: "PP Neue Montreal";
+    font-size: 13px;
+    opacity: 0.55;
+    margin-top: 22px;
+  }
+
+  .toc-chapter {
+    font-family: "HAL Timezone";
+    font-size: 17px;
+    margin-top: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    background: linear-gradient(
+      180deg,
+      #ff2fae 0%,
+      rgba(255, 47, 174, 0.7) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .toc-sub {
+    font-family: "PP Neue Montreal";
+    font-size: 14px;
+    padding-left: 14px;
+    opacity: 0.45;
+  }
+}
+
+
+
+/* Numéro dans le texte */
+sup[data-note] {
+  color: #ff2fae;
+  cursor: pointer;
+}
+
+/* Modale notes */
+#note-modal.hidden {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  #note-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(245, 220, 236, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #note-modal-content {
+    position: relative;
+    max-width: 520px;
+    width: 100%;
+    padding: 24px 22px 28px;
+    background: #f5dcec;
+    font-family: "PP Neue Montreal";
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ff2fae;
+    box-shadow:
+      0 0 24px #ff2fae,
+      0 0 48px rgba(255,176,210,0.6),
+      0 0 72px rgba(255,176,210,0.4);
+  }
+
+  #note-modal .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-family: "PP Neue Montreal";
+    font-size: 12px;
+    color: #ff2fae;
+    cursor: pointer;
+    opacity: 0.6;
+  }
+
+  #note-modal .modal-close::before {
+    content: "( fermer )";
+  }
+}
+
+
+
+@media (max-width: 900px) {
+  .video-modal-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 680px;
+    max-height: 90svh;
+    overflow-y: auto;
+    padding: 18px;
+    gap: 16px;
+  }
+
+  .video-modal-left,
+  .video-modal-right {
+    width: 100%;
+  }
+
+  #video-modal-player {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .toc-panel {
+    transform: scale(0.9);
+    transform-origin: right center;
+  }
+}
+
+
+@media (min-width: 1600px) {
+  .toc-panel {
+    transform: scale(1.05);
+    transform-origin: right center;
+  }
+}
+
+
+@media (min-width: 901px) {
+
+  body.toc-open #toc-overlay {
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 48px;     
+  }
+
+  .toc-panel {
+    width: auto;
+    max-width: none;
+  }
+}
+
+
+
+@media (min-width: 901px) {
+
+
+  body.toc-open #toc-overlay {
+    background: transparent;
+  }
+
+
+  .toc-panel {
+    background: linear-gradient(
+      135deg,
+      #f5b2d8 0%,
+      #ff7fc7 100%
+    );
+
+    padding: 48px 56px;
+    max-width: 1100px; 
+    width: auto;
+
+    box-sizing: border-box;
+  }
+}
+
+
+@media (min-width: 901px) {
+
+  body.toc-open #toc-overlay {
+    justify-content: center;  
+    align-items: center;
+    padding-right: 0;   
+  }
+
+  .toc-panel {
+    max-width: 1100px;
+    width: 100%;
+    margin-left: auto; 
+    margin-right: auto;
+  }
+}
+
+
+@media (min-width: 901px) and (max-height: 820px) {
+
+
+  #memoire-right {
+    overflow-y: auto;
+    justify-content: flex-start;  
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+
+  #iphone-wrapper {
+    transform: scale(0.9);
+    transform-origin: top center;
+    margin-top: 0.25rem;
+  }
+
+
+  #iphone-controls {
+    position: sticky;
+    bottom: 16px;
+    margin-top: 12px;
+    padding-bottom: 8px;
+    background: linear-gradient(
+      to top,
+      rgba(245, 220, 236, 0.95),
+      rgba(245, 220, 236, 0)
+    );
+  }
+}
+
+@media (min-width: 901px) and (max-height: 700px) {
+  #iphone-wrapper {
+    transform: scale(0.82);
+  }
+}
+
+
+
+@media (min-width: 901px) and (max-height: 820px) {
+
+
+  #iphone-wrapper {
+    transform: translateY(40px) scale(0.9);
+    transform-origin: top center;
+  }
+}
+
+@media (min-width: 901px) and (max-height: 700px) {
+
+  #iphone-wrapper {
+    transform: translateY(70px) scale(0.82);
+  }
+}
+
+
+
+@media (max-width: 900px) {
+
+
+  #bibliographie,
+  #remerciements {
+    padding: 24px 16px;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+
+  #bibliographie p,
+  #bibliographie li,
+  #remerciements p {
+    font-size: 14px;
+    line-height: 1.45;
+
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+
+  #bibliographie ul {
+    padding-left: 0;
+  }
+
+  #bibliographie li {
+    margin-bottom: 12px;
+  }
+
+}
+
+
+  #colophon-overlay .colophon-panel {
+    padding: 24px 16px;
+  }
+
+  #colophon-overlay p,
+  #colophon-overlay li {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  #colophon-overlay h2,
+  #colophon-overlay h3 {
+    font-size: 15px;
+    line-height: 1.3;
+  }
+
+
+
+@media (max-width: 900px) {
+  #colophon-overlay {
+    overflow-y: auto;
+  }
+}
+
+
+@media (max-width: 900px) {
+
+  #memoire-left #remerciements {
+    overflow: visible; 
+  }
+
+  #memoire-left #remerciements p {
+    text-align: left; 
+
+    overflow-wrap: anywhere;
+    word-break: normal;
+
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+}
+
+#remerciements {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+
+
+  #remerciements{
+    height: auto;
+    min-height: 100svh;
+    align-items: flex-start;
+    padding: 28px 16px 40px;
+  }
+
+
+  #remerciements .ap-card{
+    width: 100%;
+    max-width: 92vw;
+    padding: 18px 16px;
+  }
+
+  #remerciements .ap-card-text{
+    font-size: 15px;  
+    line-height: 1.45;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  #remerciements .ap-card-text em{
+    font-size: inherit;
+  }
+}
+
+.merci{
+    font-style: italic;
+    color: #ff2fae;
+}
+
+#memoire-left h3 {
+  max-width: var(--text-width);
+}
+
