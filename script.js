@@ -3,7 +3,7 @@
 let currentIndex = 0;
 let isOverride = false;
 
-const STORAGE_KEY = "memoire_highlights_v2";
+const STORAGE_KEY = "memoire_highlights_v4";
 const scrollArea = document.getElementById("memoire-left");
 const IS_TOUCH = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
 
@@ -1626,3 +1626,4 @@ if (tocMobileList) {
     }
   });
 })();
+
